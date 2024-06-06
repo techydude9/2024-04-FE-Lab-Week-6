@@ -108,20 +108,29 @@ Question 4: Todo List \n`);
  * 
  * 
  * ↓ YOUR CODE HERE ↓ */
+//step 1 of 5
 let myTodoList = [];
 
+//step 2 of 5
 myTodoList.push("Pay Bills", "Setup Travel plans", "Complete Week 6 class tasks");
 console.log("Step 2 - added three tasks to my ToDo List " + myTodoList);
 
+// step 3 of 5
 myTodoList.splice(1, 1);
 console.log("Step 3 - remove 2nd element " + myTodoList)
 
+// step 4 of 5
+let yourTodoList = [];
+yourTodoList.push("Make Lunch plans", "Change oil on car");
+console.log("Step 4 - new array with 2 items " + yourTodoList);
 
-
-
-
-
-
+//step 5 of 5
+let ourTodoList = []
+/* Tested the simple way which worked 
+ourTodoList = myTodoList + yourTodoList
+*/
+ourTodoList = myTodoList.concat(yourTodoList); 
+console.log("Step 5 - new array combining arrays from step 3 & 4" + ourTodoList);
 
 
 
@@ -139,20 +148,21 @@ Question 5: isEven  \n`);
  * 
  * 
  * ↓ YOUR CODE HERE ↓ */
-
-
-
-
+function isEven(x) {
+       if (x % 2 === 0) {
+              return true;
+       } else {
+              return false;
+       }
+}
 
 /* ↑ YOUR CODE HERE ↑ */
 
 //! Sample test cases for the above isEven function (uncomment to test)
-//console.log(isEven(2));   //should return true
-//console.log(isEven(3));   //should return false
-//console.log(isEven(4));   //should return true
-//console.log(isEven(5));   //should return false
-
-
+console.log(isEven(2));   //should return true
+console.log(isEven(3));   //should return false
+console.log(isEven(4));   //should return true
+console.log(isEven(5));   //should return false
 
 
 // Question 6: addingMachine
@@ -169,16 +179,21 @@ Question 6: addingMachine \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+let array6 = []; //example doesn't include this and yet still works. why?
 
-
-
-
+function addingMachine(array6){
+       let sumAccum = 0;
+       for (i = 0; i < array6.length; i++) {
+              sumAccum = sumAccum + array6[i];
+       }
+       return sumAccum;
+}      
 /* ↑ YOUR CODE HERE ↑ */
 
 //! Sample test cases for the above isEven function (uncomment to test)
-//console.log(addingMachine([1, 2, 3, 4, 5]));                    //should return 15
-//console.log(addingMachine([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));    //should return 55
-//console.log(addingMachine([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])); //should return 120
+console.log(addingMachine([1, 2, 3, 4, 5]));                    //should return 15
+console.log(addingMachine([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));    //should return 55
+console.log(addingMachine([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])); //should return 120
 
 
 
@@ -202,17 +217,31 @@ Question 7: reverse \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
-
-
+function reverse(x){
+    if (typeof x === 'boolean') {
+       return !x;  //value was boolean and reversing it here
+    } else if (typeof x === 'number') {
+         return x.toString().split('').reverse().join('')  // converts number to string, splits it to an array, reverses, restrings
+       } 
+       else if (typeof x === 'string'){
+         return x.split('').reverse().join('');     
+       } 
+       else if (Array.isArray(x)) {
+         return x.reverse();     
+       } 
+       else {
+       return false;
+               }
+}
 
 
 /* ↑ YOUR CODE HERE ↑ */
 
 // Sample test cases for the above reverse function (uncomment to test)
-//console.log(reverse(1234));         //should return 4321
-//console.log(reverse('hello'));      //should return 'olleh'
-//console.log(reverse(true));         //should return false
-//console.log(reverse([1, 2, 3, 4])); //should return [4, 3, 2, 1]
+console.log(reverse(1234));         //should return 4321
+console.log(reverse('hello'));      //should return 'olleh'
+console.log(reverse(true));         //should return false
+console.log(reverse([1, 2, 3, 4])); //should return [4, 3, 2, 1]
 
 
 
@@ -235,14 +264,23 @@ Question 8: removeElements \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+function removeElements(array8){
+       console.log('This is my input array ' + array8 + " with array length of " + array8.length); //used for testing the process
 
+       let ctr = array8.length - 1;
+       let showPop = "";
 
-
+       while (ctr >= 0) {
+              showPop = array8.pop();
+              console.log ("Item removed on this iteration " + showPop + " pass " + ctr);
+              ctr--;
+       } 
+} // end of removeElements
 
 /* ↑ YOUR CODE HERE ↑ */
 
 // Sample test cases for the above removeElements function (uncomment to test)
-//console.log(removeElements([1, 2, 3, 4, 5])); //should return [] (an empty array)
+console.log(removeElements([1, 2, 3, 4, 5])); //should return [] (an empty array)
 
 
 
@@ -261,14 +299,20 @@ Question 9: whichArrayIsLonger  \n`);
  * 
  * 
  * ↓ YOUR CODE HERE ↓ */
-
-
-
+function whichArrayIsLonger (array1, array2){
+       if (array1.length > array2.length) {
+              return array1;  //  I originally used console.log instead of return here.
+       } else if (array2.length > array1.length){
+              return array2;
+       }else {
+              return false;
+       }
+} // end of whichArrayIsLonger
 
 
 /* ↑ YOUR CODE HERE ↑ */
 
 // Sample test cases for the above whichArrayIsLonger function (uncomment to test)
-//console.log(whichArrayIsLonger([1, 2, 3, 4, 5], [1, 2, 3, 4]));    //should return [1, 2, 3, 4, 5]
-//console.log(whichArrayIsLonger([1, 2, 3, 4], [1, 2, 3, 4, 5, 6])); ///should return [1, 2, 3, 4, 5, 6]
-//console.log(whichArrayIsLonger([1, 2, 3, 4], [1, 2, 3, 4]));       //should return false (because they are the same length)
+console.log(whichArrayIsLonger([1, 2, 3, 4, 5], [1, 2, 3, 4]));    //should return [1, 2, 3, 4, 5]
+console.log(whichArrayIsLonger([1, 2, 3, 4], [1, 2, 3, 4, 5, 6])); ///should return [1, 2, 3, 4, 5, 6]
+console.log(whichArrayIsLonger([1, 2, 3, 4], [1, 2, 3, 4]));       //should return false (because they are the same length)
