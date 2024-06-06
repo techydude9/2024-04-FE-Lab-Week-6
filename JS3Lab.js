@@ -58,12 +58,11 @@ let alphabetArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
  * 
  * ↓ YOUR CODE HERE ↓ */
 // BJR: My code below here 6/4/2024
-const reversedArray = alphabetArray.reverse()
-console.log(reversedArray.toString())
-
-
-
-
+const reversedArray = alphabetArray.reverse().join('');
+// console.log(reversedArray.toString()) original coding I did
+//coding used in solution/video was .join instead of .toString
+// so I added .join('') to above to remove commas from resulting reverse
+console.log(reversedArray);
 
 
 // Question 3: array1
@@ -275,6 +274,7 @@ function removeElements(array8){
               console.log ("Item removed on this iteration " + showPop + " pass " + ctr);
               ctr--;
        } 
+       return array8;  //needed to add the return at the end of the function
 } // end of removeElements
 
 /* ↑ YOUR CODE HERE ↑ */
